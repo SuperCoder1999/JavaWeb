@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onchange</title>
+</head>
+<body>
+<script>
+    var change = function () {
+        alert("男神已经改变");
+    }
+
+    window.onload = function() {
+        //获得 标签对象
+        var selectObj = document.getElementById("女神");
+        selectObj.onchange = function () {
+            alert("女神已经改变");
+        }
+    }
+</script>
+
+<form>
+    选择你心目中的男神
+    <select onchange="change()">
+        <option>-- 男神 --</option>
+        <option>刘能</option>
+        <option>赵四</option>
+    </select>
+
+    选择你心目中的女神
+    <select id="女神">
+        <option>-- 女神 --</option>
+        <option>大脚</option>
+        <option>王小蒙</option>
+    </select>
+</form>
+
+</body>
+</html>
