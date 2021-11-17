@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../../:\Github\JavaWeb\01-html&CSS\JavaWeb\.idea/dataSources/
+/../../../../:\Github\JavaWeb\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
