@@ -5,7 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/01-html&amp;CSS/01-html&amp;CSS.iml" filepath="$PROJECT_DIR$/01-html&amp;CSS/01-html&amp;CSS.iml" />
       <module fileurl="file://$PROJECT_DIR$/02-javascript/02-javascript.iml" filepath="$PROJECT_DIR$/02-javascript/02-javascript.iml" />
       <module fileurl="file://$PROJECT_DIR$/03-XML/03-XML.iml" filepath="$PROJECT_DIR$/03-XML/03-XML.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_web/04_web.iml" filepath="$PROJECT_DIR$/04_web/04_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-servlet1/05-servlet1.iml" filepath="$PROJECT_DIR$/05-servlet1/05-servlet1.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaWeb.iml" filepath="$PROJECT_DIR$/JavaWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/questions/questions.iml" filepath="$PROJECT_DIR$/questions/questions.iml" />
     </modules>
   </component>
 </project>

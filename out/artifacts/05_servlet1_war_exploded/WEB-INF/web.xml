@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+<!--  ImplementsServletDemo Servlet的程序  -->
+    <servlet>
+        <servlet-name>ImplementsServletDemo</servlet-name>
+        <servlet-class>com.java.servlet.ImplementsServletDemo</servlet-class>
+        <!--init-param是初始化参数-->
+        <init-param>
+            <!--是参数名-->
+            <param-name>username</param-name>
+            <!--是参数值-->
+            <param-value>root</param-value>
+        </init-param>
+        <!--init-param是初始化参数-->
+        <init-param>
+            <!--是参数名-->
+            <param-name>url</param-name>
+            <!--是参数值-->
+            <param-value>jdbc:mysql://localhost:3306/test</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ImplementsServletDemo</servlet-name>
+        <url-pattern>/ImplementsServletDemo</url-pattern>
+    </servlet-mapping>
+
+    <!--  ImplementsServletDemo Servlet的程序  -->
+    <servlet>
+        <servlet-name>ExtendsHttpServletDemo</servlet-name>
+        <servlet-class>com.java.servlet.ExtendsHttpServletDemo</servlet-class>
+        <!--init-param是初始化参数-->
+        <init-param>
+            <!--是参数名-->
+            <param-name>username</param-name>
+            <!--是参数值-->
+            <param-value>root2</param-value>
+        </init-param>
+        <!--init-param是初始化参数-->
+        <init-param>
+            <!--是参数名-->
+            <param-name>url</param-name>
+            <!--是参数值-->
+            <param-value>jdbc:mysql://localhost:3306/test2</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExtendsHttpServletDemo</servlet-name>
+        <url-pattern>/ExtendsHttpServletDemo</url-pattern>
+    </servlet-mapping>
+
+    <!--  IDEACreateNewServlet Servlet的程序  -->
+    <servlet>
+        <servlet-name>IDEACreateNewServlet</servlet-name>
+        <servlet-class>com.java.servlet.IDEACreateNewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IDEACreateNewServlet</servlet-name>
+        <url-pattern>/IDEACreateNewServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
