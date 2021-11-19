@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+
+
+    <servlet>
+        <servlet-name>HttpServletRequestMethods</servlet-name>
+        <servlet-class>com.request.HttpServletRequestMethods</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HttpServletRequestMethods</servlet-name>
+        <url-pattern>/httpServletRequestMethods</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HttpServletRequestParameter</servlet-name>
+        <servlet-class>com.request.HttpServletRequestParameter</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HttpServletRequestParameter</servlet-name>
+        <url-pattern>/httpServletRequestParameter</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestDispatcherDemo</servlet-name>
+        <servlet-class>com.request.RequestDispatcherDemo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDispatcherDemo</servlet-name>
+        <url-pattern>/requestDispatcherDemo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestDispatcherDemoHelp</servlet-name>
+        <servlet-class>com.request.RequestDispatcherDemoHelp</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDispatcherDemoHelp</servlet-name>
+        <url-pattern>/requestDispatcherDemoHelp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Base</servlet-name>
+        <servlet-class>com.request.Base</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Base</servlet-name>
+        <url-pattern>/base</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ResponseUseDemo</servlet-name>
+        <servlet-class>com.response.ResponseUseDemo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResponseUseDemo</servlet-name>
+        <url-pattern>/responseUseDemo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ResponseRedirect</servlet-name>
+        <servlet-class>com.response.ResponseRedirect</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResponseRedirect</servlet-name>
+        <url-pattern>/responseRedirect</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ResponseRedirectHelp</servlet-name>
+        <servlet-class>com.response.ResponseRedirectHelp</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResponseRedirectHelp</servlet-name>
+        <url-pattern>/responseRedirectHelp</url-pattern>
+    </servlet-mapping>
+</web-app>

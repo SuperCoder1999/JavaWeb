@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/03-XML/03-XML.iml" filepath="$PROJECT_DIR$/03-XML/03-XML.iml" />
       <module fileurl="file://$PROJECT_DIR$/04_web/04_web.iml" filepath="$PROJECT_DIR$/04_web/04_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/05-servlet1/05-servlet1.iml" filepath="$PROJECT_DIR$/05-servlet1/05-servlet1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-ServletClient&amp;Service/06-ServletClient&amp;Service.iml" filepath="$PROJECT_DIR$/06-ServletClient&amp;Service/06-ServletClient&amp;Service.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaWeb.iml" filepath="$PROJECT_DIR$/JavaWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/questions/questions.iml" filepath="$PROJECT_DIR$/questions/questions.iml" />
     </modules>

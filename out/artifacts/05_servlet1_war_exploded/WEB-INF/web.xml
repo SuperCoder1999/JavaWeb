@@ -4,6 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+<!--  ServletContext配置信息:context-param  -->
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>123</param-value>
+    </context-param>
+
 <!--  ImplementsServletDemo Servlet的程序  -->
     <servlet>
         <servlet-name>ImplementsServletDemo</servlet-name>
@@ -61,5 +71,35 @@
     <servlet-mapping>
         <servlet-name>IDEACreateNewServlet</servlet-name>
         <url-pattern>/IDEACreateNewServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--  ServletContextUseDemo01 Servlet的程序  -->
+    <servlet>
+        <servlet-name>ServletContext01</servlet-name>
+        <servlet-class>com.java.servletcontext.ServletContextUseDemo01</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContext01</servlet-name>
+        <url-pattern>/ServletContext01</url-pattern>
+    </servlet-mapping>
+
+    <!--  ServletContextUseDemo02 Servlet的程序  -->
+    <servlet>
+        <servlet-name>ServletContextUseDemo02</servlet-name>
+        <servlet-class>com.java.servletcontext.ServletContextUseDemo02</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextUseDemo02</servlet-name>
+        <url-pattern>/ServletContextUseDemo02</url-pattern>
+    </servlet-mapping>
+
+    <!--  ServletContextUseDemo02Help Servlet的程序  -->
+    <servlet>
+        <servlet-name>ServletContextUseDemo02Help</servlet-name>
+        <servlet-class>com.java.servletcontext.ServletContextUseDemo02Help</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextUseDemo02Help</servlet-name>
+        <url-pattern>/ServletContextUseDemo02Help</url-pattern>
     </servlet-mapping>
 </web-app>
