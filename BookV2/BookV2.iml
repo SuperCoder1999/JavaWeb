@@ -19,6 +19,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bookV2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.0.50" level="application_server_libraries" />
   </component>
 </module>
