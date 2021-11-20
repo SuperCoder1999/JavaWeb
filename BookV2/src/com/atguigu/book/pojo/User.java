@@ -11,8 +11,8 @@ public class User {
     public User() {// 无参构造器 一定要,但是不知道作用在哪里??
     }
 
-    public User(int id, String name, String password, String email) {
-        this.id = id;
+    public User(String name, String password, String email) {
+        //this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
