@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-    测试 修改 jsp  需不需要 重新加载项目资源
+    测试 修改 jsp  需不需要 重新加载项目资源 : 答案是  需要的
     修改1
     <p>修改2</p>
 </body>
