@@ -5,9 +5,19 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        table {
+            border: 1px blue solid;
+            width: 600px;
+            border-collapse: collapse;
+        }
+        td, th{
+            border: 1px blue solid;
+        }
+    </style>
 </head>
 <body>
-<table border="4">
+<table>
     <%
         ArrayList<Student> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {

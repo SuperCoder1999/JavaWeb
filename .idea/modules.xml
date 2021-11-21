@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/05-servlet1/05-servlet1.iml" filepath="$PROJECT_DIR$/05-servlet1/05-servlet1.iml" />
       <module fileurl="file://$PROJECT_DIR$/06-ServletClient&amp;Service/06-ServletClient&amp;Service.iml" filepath="$PROJECT_DIR$/06-ServletClient&amp;Service/06-ServletClient&amp;Service.iml" />
       <module fileurl="file://$PROJECT_DIR$/07-Jsp/07-Jsp.iml" filepath="$PROJECT_DIR$/07-Jsp/07-Jsp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08-EL_JSTL/08-EL_JSTL.iml" filepath="$PROJECT_DIR$/08-EL_JSTL/08-EL_JSTL.iml" />
       <module fileurl="file://$PROJECT_DIR$/BookV2/BookV2.iml" filepath="$PROJECT_DIR$/BookV2/BookV2.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaWeb.iml" filepath="$PROJECT_DIR$/JavaWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/questions/questions.iml" filepath="$PROJECT_DIR$/questions/questions.iml" />

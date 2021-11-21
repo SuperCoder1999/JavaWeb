@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--SearchStudentServlet程序 的请求转发对象--%>
 <html>
 <head>
     <title>Title</title>
@@ -18,12 +19,9 @@
 </head>
 <body>
 <table>
+<%--  5.在jsp文件中 取出request中的域数据,打印到页面  --%>
     <%
-        ArrayList<Student> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            int t = i + 1;//提高输出效率
-            list.add(new Student(t, "name" + t, 18 + t, "1190" + t));
-        }
+        ArrayList<Student> list = (ArrayList<Student>)request.getAttribute("stuList");
     %>
     <%for (int i = 0; i < 10; i++) { %>
     <tr>
@@ -42,11 +40,5 @@
     </tr>
     <%}%>
 </table>
-<%--//            System.out.println(list.get(i).getId() + "\t" +--%>
-<%--//                    list.get(i).getName() + "\t" +--%>
-<%--//                    list.get(i).getAge() + "\t" +--%>
-<%--//                    list.get(i).getPhone() + "\t"--%>
-<%--//            );--%>
-
 </body>
 </html>
