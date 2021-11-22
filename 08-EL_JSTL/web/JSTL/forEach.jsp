@@ -74,7 +74,7 @@
     }
     request.setAttribute("stus", studentList);
 %>
-<form action="" enctype=""></form>
+
 <table>
     <tr>
         <th>编号</th>
@@ -93,7 +93,7 @@
         varStatus 属性表示当前遍历到的数据的状态
         for（int i = 1; i < 10; i+=2）
     --%>
-    <c:forEach begin="-2" end="14" step="1" varStatus="status" items="${requestScope.stus}" var="stu">
+    <c:forEach begin="0" end="14" step="1" varStatus="status" items="${requestScope.stus}" var="stu">
         <tr>
             <td>${stu.id}</td>
             <td>${stu.username}</td>

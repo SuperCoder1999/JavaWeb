@@ -13,5 +13,13 @@
         <param-value>jdbc:mysql:///test</param-value>
     </context-param>
 
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>com.atguigu.servlet.UploadServlet02</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/uploadServlet</url-pattern>
+    </servlet-mapping>
 
 </web-app>
