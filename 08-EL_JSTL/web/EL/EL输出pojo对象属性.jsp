@@ -3,13 +3,8 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.atguigu.pojo.Person02" %>
-<%@ page import="com.atguigu.pojo.Person02" %><%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2020/2/4
-  Time: 9:11
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.atguigu.pojo.Person02" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -43,8 +38,24 @@
 输出Person的List集合中个别元素值：${p.cities[2]} <br>
 输出Person的Map集合: ${p.map} <br>
 输出Person的Map集合中某个key的值: ${p.map.key3} <br>
+
+<%--EL 表达式 找对象属性,找的不是bean对象属性,而是找其对应的 getXxx()方法.其中Xxx对应了 要找的名字.--%>
 输出Person的age属性：${p.age} <br>
 
+
+<%-- map等 key 中 含有特殊字符,必须用[] --%>
+<%
+    Map<String,Object> map2 = new HashMap<String, Object>();
+    map2.put("a.a.a", "aaaValue");
+    map2.put("b+b+b", "bbbValue");
+    map2.put("c-c-c", "cccValue");
+
+    request.setAttribute("map", map2);
+%>
+
+${ map['a.a.a'] } <br>
+${ map["b+b+b"] } <br>
+${ map['c-c-c'] } <br>
 
 </body>
 </html>
