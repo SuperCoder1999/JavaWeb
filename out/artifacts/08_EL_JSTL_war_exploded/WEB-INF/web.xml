@@ -30,4 +30,22 @@
         <servlet-name>DownloadServlet</servlet-name>
         <url-pattern>/downloadServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DownloadServletGoogle</servlet-name>
+        <servlet-class>com.atguigu.servlet.DownloadServletGoogle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadServletGoogle</servlet-name>
+        <url-pattern>/downloadServletGoogle</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownloadServletFirefox</servlet-name>
+        <servlet-class>com.atguigu.servlet.DownloadServletFirefox</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadServletFirefox</servlet-name>
+        <url-pattern>/downloadServletFirefox</url-pattern>
+    </servlet-mapping>
 </web-app>
