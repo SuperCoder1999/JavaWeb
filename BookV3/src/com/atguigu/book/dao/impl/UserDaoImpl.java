@@ -20,6 +20,6 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
     @Override
     public int saveUser(User user) {
         String sql = "insert into t_user values(null,?,?,?)";
-        return update(sql, user.getName(), user.getPassword(), user.getEmail());
+        return update(sql, user.getUsername(), user.getPassword(), user.getEmail());
     }
 }

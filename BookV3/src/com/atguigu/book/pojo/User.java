@@ -3,16 +3,16 @@ package com.atguigu.book.pojo;
 
 public class User {
     private int id;
-    private String name;
+    private String username;
     private String password;
     private String email;
 
     public User() {// 无参构造器 一定要,但是不知道作用在哪里??
     }
 
-    public User(String name, String password, String email) {
+    public User(String username, String password, String email) {
         //this.id = id;
-        this.name = name;
+        this.username = username;
         this.password = password;
         this.email = email;
     }
@@ -25,12 +25,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public String getPassword() {
@@ -53,7 +53,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';

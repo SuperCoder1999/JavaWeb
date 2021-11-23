@@ -2,6 +2,8 @@ package com.atguigu.book.web;
 
 import com.atguigu.book.pojo.User;
 import com.atguigu.book.service.impl.UserServiceImpl;
+import com.atguigu.book.utils.WebUtils;
+import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -37,12 +39,18 @@ public class UserServlet extends BaseServlet {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
+
+        //优化:利用BeanUtils 将多个请求参数,注入到JavaBean中
+        User user = WebUtils.copyParaToBean(request.getParameterMap(), new User());
+        System.out.println(user);
+
         //我觉得 确认密码 不必要再检验了.这个应该由js检验的
 //        2、检查 验证码是否正确  === 写死,要求验证码为:abcde
         if (!"abcde".equalsIgnoreCase(code)) {
             //请求转发到 regist.jsp
             System.out.println("验证码错误:"+ code);
             request.setAttribute("username", userName);
+            request.setAttribute("email", email);
             request.setAttribute("msg", "验证码错误");
             request.getRequestDispatcher("/pages/user/regist.jsp").forward(request, response);
             return;
@@ -55,6 +63,7 @@ public class UserServlet extends BaseServlet {
             //请求转发到 regist.jsp
             System.out.println("用户名已经存在:" + userName);
             request.setAttribute("username", userName);
+            request.setAttribute("email", email);
             request.setAttribute("msg", "用户名已经被使用");
             request.getRequestDispatcher("/pages/user/regist.jsp").forward(request, response);
             return;
