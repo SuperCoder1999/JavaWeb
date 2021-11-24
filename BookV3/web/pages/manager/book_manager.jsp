@@ -33,7 +33,7 @@
 <body>
 
 <div id="header">
-    <img class="logo_img" alt="" src="static/img/logo.gif">
+    <img class="logo_img" alt="" src="../static/img/logo.gif">
     <span class="wel_word">图书管理系统</span>
     <%@ include file="/pages/common/manager_menu.jsp" %>
 </div>

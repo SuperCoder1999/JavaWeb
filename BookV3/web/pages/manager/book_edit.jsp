@@ -23,7 +23,7 @@
 <body>
 ${empty param.id?"add":"update"}
 		<div id="header">
-			<img class="logo_img" alt="" src="static/img/logo.gif" >
+			<img class="logo_img" alt="" src="../static/img/logo.gif" >
 			<span class="wel_word">编辑图书</span>
 			<%@ include file="/pages/common/manager_menu.jsp" %>
 		</div>

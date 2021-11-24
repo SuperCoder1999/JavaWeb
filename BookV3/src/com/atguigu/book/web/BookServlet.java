@@ -2,6 +2,7 @@ package com.atguigu.book.web;
 
 
 import com.atguigu.book.pojo.Book;
+import com.atguigu.book.pojo.Page;
 import com.atguigu.book.service.BookService;
 import com.atguigu.book.service.impl.BookServiceImpl;
 import com.atguigu.book.utils.WebUtils;
@@ -16,8 +17,19 @@ public class BookServlet extends BaseServlet {
 
     //对数据库操作的类
     BookService bookService = new BookServiceImpl();
+    protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.获取参数 pageNO/pageSize
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 0);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        //2.调用 bookService的page()方法,获取 要显示的页面对应的page对象
+        Page<Book> page = bookService.page(pageNo, pageSize);
+        //3.将page保存到 request中
+        req.setAttribute("page", page);
+        //4.请求转发到 /pages/manager/book_manager.jsp 让jsp利用page中的信息显示页面
+        req.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(req, resp);
+    }
 
-    public void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //1.将获取的参数 封装成Book对象
         Book book = WebUtils.copyParaToBean(request.getParameterMap(), new Book());
         //2.调用bookService.addBook()方法 - 并没有验证
@@ -26,7 +38,7 @@ public class BookServlet extends BaseServlet {
         response.sendRedirect(request.getContextPath()+ "/manager/bookServlet?action=list");
     }
 
-    public void update(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void update(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //1.将传来的参数封装为Book对象
         Book book = WebUtils.copyParaToBean(request.getParameterMap(), new Book());
         //2.调用 bookService.updateBook(book)
@@ -36,7 +48,7 @@ public class BookServlet extends BaseServlet {
         response.sendRedirect(request.getContextPath() + "/manager/bookServlet?action=list");
     }
 
-    public void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //1.获取请求中的参数 id
         int id = WebUtils.parseInt(request.getParameter("id"), -1);
         //2.调用bookServlet.deleteBook()方法
@@ -46,7 +58,7 @@ public class BookServlet extends BaseServlet {
         response.sendRedirect(request.getContextPath()+"/manager/bookServlet?action=list");
     }
 
-    public void getBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void getBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //1.获取 上传的参数 id
         int id = WebUtils.parseInt(request.getParameter("id"), -1);
         //2.调用bookService.queryBookById()方法 获取对应的 book对象
@@ -57,7 +69,7 @@ public class BookServlet extends BaseServlet {
         request.getRequestDispatcher("/pages/manager/book_edit.jsp").forward(request, response);
     }
 
-    public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //由其他页面 访问BookServlet 的list方法
         //1.从数据库中 获取 book表所有内容的list对象
         List<Book> list =  bookService.queryBooks();

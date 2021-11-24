@@ -15,7 +15,7 @@
 <body>
 	
 	<div id="header">
-			<img class="logo_img" alt="" src="../../static/img/logo.gif" >
+			<img class="logo_img" alt="" src="../../../static/img/logo.gif" >
 			<span class="wel_word">结算</span>
 		<%@ include file ="/pages/common/login_success_menu.jsp" %>
 	</div>
