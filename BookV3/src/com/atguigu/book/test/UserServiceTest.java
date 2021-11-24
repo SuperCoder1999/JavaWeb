@@ -1,16 +1,16 @@
 package com.atguigu.book.test;
 
 import com.atguigu.book.pojo.User;
+import com.atguigu.book.service.UserService;
 import com.atguigu.book.service.impl.UserServiceImpl;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
-public class UserServiceImplTest {
+public class UserServiceTest {
 
     @Test
     public void existsUsername() {
-        UserServiceImpl userService = new UserServiceImpl();
+        UserService userService = new UserServiceImpl();
         System.out.println(userService.existsUsername("admin"));
     }
 

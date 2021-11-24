@@ -7,15 +7,15 @@ import java.lang.reflect.Method;
  * 利用 反射 调用 类的各种方法
  */
 
-public class UserServletTest {
+public class UserServletFirefoxTest {
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         String method = "regist";
 
-        UserServletTest userServletTest = new UserServletTest();
+        UserServletFirefoxTest userServletFirefoxTest = new UserServletFirefoxTest();
 
-        Method method1 = UserServletTest.class.getMethod(method);
+        Method method1 = UserServletFirefoxTest.class.getMethod(method);
 
-        method1.invoke(userServletTest);
+        method1.invoke(userServletFirefoxTest);
     }
 
     public void login() {
