@@ -8,6 +8,13 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class BaseServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("get");
+        doPost(req, resp);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String method = request.getParameter("action");
         //反射 调用方法

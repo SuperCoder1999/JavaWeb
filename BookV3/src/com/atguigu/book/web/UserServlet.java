@@ -3,7 +3,7 @@ package com.atguigu.book.web;
 import com.atguigu.book.pojo.User;
 import com.atguigu.book.service.impl.UserServiceImpl;
 import com.atguigu.book.utils.WebUtils;
-import org.apache.commons.beanutils.BeanUtils;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,12 +12,15 @@ import java.io.IOException;
 
 public class UserServlet extends BaseServlet {
 
+    //这个对数据库操作的类,几乎在每个方法中都要创建,所以提起出来
+    UserServiceImpl userService = new UserServiceImpl();
+
     protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        1）获取用户名密码
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
 //        2）判断用户是否存在
-        UserServiceImpl userService = new UserServiceImpl();
+        //UserServiceImpl userService = new UserServiceImpl();
         if (userService.login(userName, password) == null) {
             System.out.println("账号或密码错误:" + userName + "\t" + password);
             //请求转移到 登陆页面
@@ -58,7 +61,7 @@ public class UserServlet extends BaseServlet {
 
         System.out.println("3、检查 用户名是否可用");
 //        3、检查 用户名是否可用
-        UserServiceImpl userService = new UserServiceImpl();
+        //UserServiceImpl userService = new UserServiceImpl();
         if (!userService.existsUsername(userName)) {
             //请求转发到 regist.jsp
             System.out.println("用户名已经存在:" + userName);
