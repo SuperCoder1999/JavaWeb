@@ -55,7 +55,7 @@
                 <td>${item.author}</td>
                 <td>${item.sales}</td>
                 <td>${item.stock}</td>
-                <td><a href="pages/manager/book_edit.jsp">修改</a></td>
+                <td><a href="manager/bookServlet?action=getBook&id=${item.id}">修改</a></td>
                 <td><a class="deleteClass" href="manager/bookServlet?action=delete&id=${item.id}">删除</a></td>
             </tr>
         </c:forEach>

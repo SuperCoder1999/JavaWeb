@@ -26,8 +26,14 @@ public class BookServlet extends BaseServlet {
         response.sendRedirect(request.getContextPath()+ "/manager/bookServlet?action=list");
     }
 
-    public void update(HttpServletRequest request, HttpServletResponse response) {
-
+    public void update(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //1.将传来的参数封装为Book对象
+        Book book = WebUtils.copyParaToBean(request.getParameterMap(), new Book());
+        //2.调用 bookService.updateBook(book)
+        System.out.println(book);
+        bookService.updateBook(book);
+        //3.重定向到 request.getContextPath() + "/manager/bookServlet?action=list"
+        response.sendRedirect(request.getContextPath() + "/manager/bookServlet?action=list");
     }
 
     public void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -40,8 +46,15 @@ public class BookServlet extends BaseServlet {
         response.sendRedirect(request.getContextPath()+"/manager/bookServlet?action=list");
     }
 
-    public void getBook(HttpServletRequest request, HttpServletResponse response) {
-
+    public void getBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //1.获取 上传的参数 id
+        int id = WebUtils.parseInt(request.getParameter("id"), -1);
+        //2.调用bookService.queryBookById()方法 获取对应的 book对象
+        Book book = bookService.queryBookById(id);
+        //3.将book对象 存到 request域中
+        request.setAttribute("book", book);
+        //4.请求转发 到 /pages/manager/book_edit.jsp 页面,显示book信息
+        request.getRequestDispatcher("/pages/manager/book_edit.jsp").forward(request, response);
     }
 
     public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
