@@ -31,14 +31,16 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 
     @Override
     public Book queryBookById(Integer id) {
-        String sql = "select * from t_book where `id`=?";
+        String sql = "select `id` , `name` , `author` , `price` , `sales` , `stock` , `img_path` imgPath " +
+                "from t_book where `id`=?";
         Book book = queryForOne(sql, Book.class, id);
         return book;
     }
 
     @Override
     public List<Book> queryBooks() {
-        String sql = "select * from t_book";
+        String sql = "select `id` , `name` , `author` , `price` , `sales` , `stock` , `img_path` imgPath" +
+                " from t_book";
         List<Book> list = queryForMany(sql, Book.class);
         return list;
     }
@@ -52,6 +54,8 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 
     @Override
     public List<Book> queryForPageItems(int begin, int pageSize) {
-        return null;
+        String sql = "select `id` , `name` , `author` , `price` , `sales` , `stock` , `img_path` imgPath from t_book limit ?, ?";
+        List<Book> list = queryForMany(sql,Book.class, begin, pageSize);
+        return list;
     }
 }

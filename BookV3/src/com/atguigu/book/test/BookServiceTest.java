@@ -1,6 +1,7 @@
 package com.atguigu.book.test;
 
 import com.atguigu.book.pojo.Book;
+import com.atguigu.book.pojo.Page;
 import com.atguigu.book.service.BookService;
 import com.atguigu.book.service.impl.BookServiceImpl;
 import org.junit.Test;
@@ -37,5 +38,10 @@ public class BookServiceTest {
         for (Book queryBook : bookService.queryBooks()) {
             System.out.println(queryBook);
         }
+    }
+
+    @Test
+    public void page(){
+        System.out.println(bookService.page(1, Page.PAGE_SIZE ));
     }
 }

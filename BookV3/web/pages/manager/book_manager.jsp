@@ -48,7 +48,7 @@
             <td>库存</td>
             <td colspan="2">操作</td>
         </tr>
-        <c:forEach items="${requestScope.list}" var="item">
+        <c:forEach items="${requestScope.page.items}" var="item">
             <tr>
                 <td>${item.name}</td>
                 <td>${item.price}</td>

@@ -33,7 +33,7 @@
 <body>
 
 <div id="header">
-    <img class="logo_img" alt="" src="static/img/logo.gif">
+    <img class="logo_img" alt="" src="../static/img/logo.gif">
     <span class="wel_word">图书管理系统</span>
     <%@ include file="/pages/common/manager_menu.jsp" %>
 </div>
@@ -48,7 +48,7 @@
             <td>库存</td>
             <td colspan="2">操作</td>
         </tr>
-        <c:forEach items="${requestScope.list}" var="item">
+        <c:forEach items="${requestScope.page.items}" var="item">
             <tr>
                 <td>${item.name}</td>
                 <td>${item.price}</td>
