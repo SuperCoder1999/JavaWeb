@@ -30,32 +30,44 @@ public class BookServlet extends BaseServlet {
     }
 
     protected void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //添加数据后,定位最后一页
+        int pageNo = WebUtils.parseInt(request.getParameter("pageNo"), 1);
+        pageNo += 1;
         //1.将获取的参数 封装成Book对象
         Book book = WebUtils.copyParaToBean(request.getParameterMap(), new Book());
         //2.调用bookService.addBook()方法 - 并没有验证
         bookService.addBook(book);
         //3.请求重定向到 /pages/manager/book_manager.jsp - "刷新"图书列表
-        response.sendRedirect(request.getContextPath()+ "/manager/bookServlet?action=list");
+        //添加完,不能准确定位最后一页,比如最后一页已经是满的了.则需要翻页.(我想的是,可以再在bookServlet中写一个函数,来显示最后一页)
+        //想法 繁琐:直接将pageNo+1.如果不需要翻页,则由setPageNo()函数自动设置为最后一页.
+        response.sendRedirect(request.getContextPath()+ "/manager/bookServlet?action=page&pageNo="
+                + pageNo);
     }
 
     protected void update(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //修改数据后,定位修改的那一页
+        int pageNo = WebUtils.parseInt(request.getParameter("pageNo"), 1);
         //1.将传来的参数封装为Book对象
         Book book = WebUtils.copyParaToBean(request.getParameterMap(), new Book());
         //2.调用 bookService.updateBook(book)
         System.out.println(book);
         bookService.updateBook(book);
         //3.重定向到 request.getContextPath() + "/manager/bookServlet?action=list"
-        response.sendRedirect(request.getContextPath() + "/manager/bookServlet?action=list");
+        response.sendRedirect(request.getContextPath() + "/manager/bookServlet?action=page&pageNo="
+                + pageNo);
     }
 
     protected void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //删除数据后,定位删除的那一页
+        int pageNo = WebUtils.parseInt(request.getParameter("pageNo"), 1);
         //1.获取请求中的参数 id
         int id = WebUtils.parseInt(request.getParameter("id"), -1);
         //2.调用bookServlet.deleteBook()方法
         bookService.deleteBookById(id);
         //3.请求重定向到 request.getContextPath()+"/manager/bookServlet?action=list"程序.
         //通过bookServlet中的list方法,请求转发到 图书列表页面
-        response.sendRedirect(request.getContextPath()+"/manager/bookServlet?action=list");
+        response.sendRedirect(request.getContextPath()+"/manager/bookServlet?action=page&pageNo="
+                + pageNo);
     }
 
     protected void getBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

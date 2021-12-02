@@ -55,8 +55,8 @@
                 <td>${item.author}</td>
                 <td>${item.sales}</td>
                 <td>${item.stock}</td>
-                <td><a href="manager/bookServlet?action=getBook&id=${item.id}">修改</a></td>
-                <td><a class="deleteClass" href="manager/bookServlet?action=delete&id=${item.id}">删除</a></td>
+                <td><a class="deleteClass2" href="manager/bookServlet?action=getBook&id=${item.id}&pageNo=${requestScope.page.pageNo}">修改</a></td>
+                <td><a id="delete" class="deleteClass" href="manager/bookServlet?action=delete&id=${item.id}&pageNo=${requestScope.page.pageNo}">删除</a></td>
             </tr>
         </c:forEach>
         <tr>
@@ -66,10 +66,72 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a href="pages/manager/book_edit.jsp">添加图书</a></td>
+            <td><a href="pages/manager/book_edit.jsp?pageNo=${requestScope.page.pageTotal}">添加图书</a></td>
         </tr>
     </table>
+    <div id="page_nav">
+
+        <c:if test="${requestScope.page.pageNo > 1}">
+            <a href="manager/bookServlet?action=page&pageNo=1">首页</a>
+            <a href="manager/bookServlet?action=page&pageNo=${requestScope.page.pageNo-1}">上一页</a>
+        </c:if>
+        <c:choose>
+            <c:when test="${requestScope.page.pageTotal<=5}">
+                <c:set scope="page" var="begin" value="1"/>
+                <c:set scope="page" var="end" value="${requestScope.page.pageTotal}"/>
+            </c:when>
+            <c:otherwise>
+                <c:choose>
+                    <c:when test="${requestScope.page.pageNo <= 3}">
+                        <c:set scope="page" var="begin" value="1"/>
+                        <c:set scope="page" var="end" value="5"/>
+                    </c:when>
+                    <c:when test="${requestScope.page.pageNo > requestScope.page.pageTotal-3}">
+                        <c:set scope="page" var="begin" value="${requestScope.page.pageTotal-4}"/>
+                        <c:set scope="page" var="end" value="${requestScope.page.pageTotal}"/>
+                    </c:when>
+                    <c:otherwise>
+                        <c:set scope="page" var="begin" value="${requestScope.page.pageNo-2}"/>
+                        <c:set scope="page" var="end" value="${requestScope.page.pageNo+2}"/>
+                    </c:otherwise>
+                </c:choose>
+            </c:otherwise>
+        </c:choose>
+        <c:forEach begin="${begin}" end="${end}" var="id">
+            <c:if test="${id == requestScope.page.pageNo}">
+                【${requestScope.page.pageNo}】
+            </c:if>
+            <c:if test="${id != requestScope.page.pageNo}">
+                <a href="manager/bookServlet?action=page&pageNo=${id}">${id}</a>
+            </c:if>
+        </c:forEach>
+       <c:if test="${requestScope.page.pageNo < requestScope.page.pageTotal}">
+           <a href="manager/bookServlet?action=page&pageNo=${requestScope.page.pageNo+1}">下一页</a>
+           <a href="manager/bookServlet?action=page&pageNo=${requestScope.page.pageTotal}">末页</a>
+       </c:if>
+        共${requestScope.page.pageTotal}页，${requestScope.page.pageTotalCount}条记录 到第<input value="${requestScope.page.pageNo}" name="pn" id="pn_input"/>页
+        <input type="button" id="searchPageBtn" value="确定">
+        <script type="text/javascript">
+
+            $(function () {
+                // 跳到指定的页码
+                $("#searchPageBtn").click(function () {
+
+                    var pageNo = $("#pn_input").val();
+
+                    <%--var pageTotal = ${requestScope.page.pageTotal};--%>
+                    <%--alert(pageTotal);--%>
+
+                    <%--javaScript语言中提供了一个location地址栏对象
+                    它有一个属性叫href.它可以获取浏览器地址栏中的地址
+                    href属性可读，可写--%>
+                    location.href = "${pageScope.basePath}manager/bookServlet?action=page&pageNo=" + pageNo;
+                });
+            });
+        </script>
+    </div>
 </div>
+
 <%@ include file="/pages/common/footer.jsp" %>
 </body>
 </html>

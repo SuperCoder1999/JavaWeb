@@ -42,10 +42,6 @@ public class Page<T> {
         return pageNo;
     }
 
-    public void setPageNo(Integer pageNo) {
-        this.pageNo = pageNo;
-    }
-
     public Integer getPageTotal() {
         return pageTotal;
     }
@@ -54,6 +50,13 @@ public class Page<T> {
         this.pageTotal = pageTotal;
     }
 
+    public void setPageNo(Integer pageNo) {
+        if (pageNo < 1)
+            pageNo = 1;
+        if (pageNo > pageTotal)
+            pageNo = pageTotal;
+        this.pageNo = pageNo;
+    }
     @Override
     public String toString() {
         return "Page{" +
