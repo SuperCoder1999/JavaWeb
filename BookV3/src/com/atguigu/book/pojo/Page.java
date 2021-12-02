@@ -13,6 +13,8 @@ public class Page<T> {
     private Integer pageSize = PAGE_SIZE;
     private Integer pageTotalCount;
     private List<T> items;
+    // 分页条的请求地址
+    private String url;
 
     public static Integer getPageSize() {
         return PAGE_SIZE;
@@ -57,6 +59,15 @@ public class Page<T> {
             pageNo = pageTotal;
         this.pageNo = pageNo;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public String toString() {
         return "Page{" +
@@ -65,6 +76,7 @@ public class Page<T> {
                 ", pageSize=" + pageSize +
                 ", pageTotalCount=" + pageTotalCount +
                 ", items=" + items +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

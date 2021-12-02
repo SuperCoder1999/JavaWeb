@@ -23,6 +23,7 @@ public class BookServlet extends BaseServlet {
         int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
         //2.调用 bookService的page()方法,获取 要显示的页面对应的page对象
         Page<Book> page = bookService.page(pageNo, pageSize);
+        page.setUrl("manager/bookServlet?action=page");
         //3.将page保存到 request中
         req.setAttribute("page", page);
         //4.请求转发到 /pages/manager/book_manager.jsp 让jsp利用page中的信息显示页面

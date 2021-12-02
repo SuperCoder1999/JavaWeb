@@ -22,6 +22,7 @@ public class ClientBookServlet extends BaseServlet {
         Page<Book> page = bookService.page(pageNo, pageSize);
         //3.将page保存到 request中
         req.setAttribute("page", page);
+        page.setUrl("client/bookServlet?action=page");
         //4.请求转发到 /pages/manager/book_manager.jsp 让jsp利用page中的信息显示页面
         System.out.println("zhuanfa");
         req.getRequestDispatcher("/pages/client/index.jsp").forward(req, resp);
