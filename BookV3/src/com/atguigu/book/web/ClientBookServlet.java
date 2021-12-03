@@ -52,6 +52,8 @@ public class ClientBookServlet extends BaseServlet {
         //因为page显示的页面就是, min如果为空max为空,即查询[0,0xffffffff]的范围.
         //而 如果min或max单方面为空,也不会报错,和不传入min或max参数是一样的
         page.setUrl("client/bookServlet?action=pageByPrice&min="+min+"&max="+max);
+        //验证 :将 index.jsp 中请求转发到 pageByPrice了.
+        //有个缺点:在价格范围框中,显示了 0 和 0xffffffff
 
         //4.请求转发到 /pages/manager/book_manager.jsp 让jsp利用page中的信息显示页面
         System.out.println("zhuanfa");
