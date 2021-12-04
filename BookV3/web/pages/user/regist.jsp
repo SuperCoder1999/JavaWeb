@@ -16,6 +16,11 @@
 
         $(function(){
 
+            //点击 验证码图片,进行更换验证码
+            $("#code_img").click(function () {
+               this.src="${basePath}kaptcha.jpg?d=" + new Date();
+            });
+
             //1.这些信息验证 都是 在 submit 的时候进行判断的（正规的应该是 写完就验证 mouseout事务
             $("#sub_btn").click(function(){
                 // 验证用户名：必须由字母，数字下划线组成，并且长度为5 到12 位
@@ -135,9 +140,8 @@
                         <br/>
                         <br/>
                         <label>验证码：</label>
-                        <input class="itxt" type="text" name="code" style="width: 150px;" id="code"
-                        value="<%=request.getAttribute("ccode")==null?"":request.getAttribute("ccode")%>"/>
-                        <img alt="" src="static/img/code.bmp" style="float: right; margin-right: 40px">
+                        <input class="itxt" type="text" name="code" style="width: 150px;" id="code"/>
+                        <img id="code_img" alt="" src="kaptcha.jpg" style="float: right; margin-right: 40px; width: 110px; height: 30px;">
                         <br/>
                         <br/>
                         <input type="submit" value="注册" id="sub_btn"/>

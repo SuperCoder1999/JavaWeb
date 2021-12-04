@@ -1,5 +1,6 @@
 package com.atguigu.book.web;
 
+import com.atguigu.book.pojo.User;
 import com.atguigu.book.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,8 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 //        2）判断用户是否存在
         UserServiceImpl userService = new UserServiceImpl();
-        if (userService.login(userName, password) == null) {
+        User loginUser = userService.login(userName, password);
+        if (loginUser == null) {
             System.out.println("账号或密码错误:" + userName + "\t" + password);
             //请求转移到 登陆页面
             //        3）如果登陆失败--->>>> 返回用户名或者密码错误信息
