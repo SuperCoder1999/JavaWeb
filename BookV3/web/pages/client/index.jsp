@@ -15,6 +15,18 @@
     <%-- 静态包含 base标签、css样式、jQuery文件 --%>
     <%@ include file="/pages/common/head.jsp"%>
     <link type="text/css" rel="stylesheet" href="static/css/style.css" >
+    <Script type="text/javascript">
+        $(function () {
+            $("button.addToCart").click(function() {
+                /*
+                  在事件响应的function函数中,有一个this对象,这个对象,是当前响应
+                  事件的dom对象
+                 */
+                var bookId = $(this).attr("bookId");
+                location.href="http://local"
+            })
+        })
+    </Script>
 </head>
 <body>
 
@@ -79,7 +91,7 @@
                     <span class="sp2">${book.stock}</span>
                 </div>
                 <div class="book_add">
-                    <button class="addToCart">加入购物车</button>
+                    <button bookId="${book.id}" class="addToCart">加入购物车</button>
                 </div>
             </div>
         </div>
