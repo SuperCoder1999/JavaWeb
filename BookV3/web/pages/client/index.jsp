@@ -23,7 +23,7 @@
                   事件的dom对象
                  */
                 var bookId = $(this).attr("bookId");
-                location.href="http://local"
+                location.href="${pageScope.basePath}cartServlet?action=addItem&id=" + bookId;
             })
         })
     </Script>
