@@ -23,9 +23,9 @@ public class CartServlet extends BaseServlet {
         //2.在Mysql中通过 queryBookById()找到对应的Book对象
         Book book = bookService.queryBookById(id);
         //2.5将Book对象,封装成CartItem对象
-        CartItem cartItem = new CartItem(book.getId(), book.getName(),1, book.getPrice(), book.getPrice());
+        CartItem cartItem = new CartItem(book.getId(), book.getName(), 1, book.getPrice(), book.getPrice());
         //3.采用 "懒汉模式" 在Session域中创建一个 Cart对象
-        Cart cart = (Cart)request.getSession().getAttribute("cart");
+        Cart cart = (Cart) request.getSession().getAttribute("cart");
         if (cart == null) {
             cart = new Cart();
             request.getSession().setAttribute("cart", cart);
@@ -42,12 +42,23 @@ public class CartServlet extends BaseServlet {
         //1.获取id参数
         int id = WebUtils.parseInt(request.getParameter("id"), 0);
         //2.从 Session域中 获取 cart对象
-        Cart cart = (Cart)request.getSession().getAttribute("cart");
+        Cart cart = (Cart) request.getSession().getAttribute("cart");
         //3.调用 cart.deleteItem()方法 删除
         if (cart != null) {
             cart.deleteItem(id);
         }
         //4.重定向 到 referer
+        response.sendRedirect(request.getHeader("Referer"));
+    }
+
+    protected void clear(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //1.获取 cart对象
+        Cart cart = (Cart)request.getSession().getAttribute("cart");
+        //2.调用 cart.clear()方法清空购物车
+        if (cart != null) {
+            cart.clear();
+        }
+        //3.重定向 到 Referer
         response.sendRedirect(request.getHeader("Referer"));
     }
 }
