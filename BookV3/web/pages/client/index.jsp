@@ -32,7 +32,7 @@
 
 <div id="header">
     <img class="logo_img" alt="" src="static/img/logo.gif" >
-    <span class="wel_word">网上de 书城</span>
+    <span class="wel_word">网上书城</span>
     <div>
         <c:if test="${not empty sessionScope.user.username}">
             <span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
@@ -58,10 +58,17 @@
             </form>
         </div>
         <div style="text-align: center">
-            <span>您的购物车中有3件商品</span>
-            <div>
-                您刚刚将<span style="color: red">时间简史</span>加入到了购物车中
-            </div>
+            <c:if test="${not empty sessionScope.cart.items}">
+                <span>您的购物车中有${sessionScope.cart.totalCount}件商品</span>
+                <div>
+                    您刚刚将<span style="color: red">${sessionScope.lastName}</span>加入到了购物车中
+                </div>
+            </c:if>
+           <c:if test="${empty sessionScope.cart.items}">
+               <div>
+                   <span style="color: red">当前购物车为空</span>
+               </div>
+           </c:if>
         </div>
 
         <c:forEach items="${requestScope.page.items}" var="book">

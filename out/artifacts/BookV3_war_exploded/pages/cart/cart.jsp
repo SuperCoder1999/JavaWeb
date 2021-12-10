@@ -16,6 +16,21 @@
 			$("a.clear").click(function () {
 				return confirm("确定清空?")
 			})
+
+			<%--给输入框 绑定 onchange事件
+			onchange事件:输入框内容 发生变化 才会触发事件--%>
+			$(".updateCount").change(function () {
+				var BookId = $(this).attr("BookId");
+				var name = $(this).parent().parent().find("td:first").text();
+				var count = this.value;
+				var defaultValue = this.defaultValue;
+				if (confirm("确定将" + name + "的数量" + defaultValue + "修改为" + count))
+					location.href="${requestScope.basePath}cartServlet?action=updateCount&count=" + count + "&id=" + BookId;
+				else
+					this.value = this.defaultValue;
+
+
+			})
 		})
 
 	</script>
@@ -52,9 +67,10 @@
 			<c:forEach items="${sessionScope.cart.items}" var="entry">
 				<tr>
 					<td>${entry.value.name}</td>
-					<td>${entry.value.count}</td>
+					<td><input type="text" class="updateCount"
+							   BookId="${entry.value.id}" style="width: 80px;" value="${entry.value.count}"></td>
 					<td>${entry.value.price}</td>
-					<td>${entry.value.price}</td>
+					<td>${entry.value.totalPrice}</td>
 					<td><a class="deleteItem" href="cartServlet?action=deleteItem&id=${entry.value.id}">删除</a></td>
 				</tr>
 			</c:forEach>

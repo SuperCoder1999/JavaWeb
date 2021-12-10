@@ -32,8 +32,8 @@ public class CartServlet extends BaseServlet {
         }
         //4.调用 addItem()方法,添加book,到购物车
         cart.addItem(cartItem);
-        System.out.println(cart);
-        System.out.println(request.getHeader("Referer"));
+        //4.5 将刚刚添加的商品名保存到 session域中,回显到index.jsp中
+        request.getSession().setAttribute("lastName", cartItem.getName());
         //5.重定向 到 referer 中
         response.sendRedirect(request.getHeader("Referer"));
     }
@@ -53,12 +53,24 @@ public class CartServlet extends BaseServlet {
 
     protected void clear(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //1.获取 cart对象
-        Cart cart = (Cart)request.getSession().getAttribute("cart");
+        Cart cart = (Cart) request.getSession().getAttribute("cart");
         //2.调用 cart.clear()方法清空购物车
         if (cart != null) {
             cart.clear();
         }
         //3.重定向 到 Referer
+        response.sendRedirect(request.getHeader("Referer"));
+    }
+
+    protected void updateCount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //1. 获取request中的id,count参数
+        int id = WebUtils.parseInt(request.getParameter("id"), 0);
+        int count = WebUtils.parseInt(request.getParameter("count"), 1);
+        //2.在session域中找到 cart对象,调用cart对象的updateCount()方法
+        Cart cart = (Cart)request.getSession().getAttribute("cart");
+        if (cart != null)
+            cart.updateCount(id, count);
+        //3.重定向到Referer中.
         response.sendRedirect(request.getHeader("Referer"));
     }
 }
