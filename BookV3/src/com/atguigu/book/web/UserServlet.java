@@ -45,7 +45,7 @@ public class UserServlet extends BaseServlet {
         //        4）如果登录成功--->>>> 返回登陆成功信息
         System.out.println("登录成功");
         System.out.println(request.getContextPath());
-        //保存 用户名 到 Session域 中,这样,在每个页面 的 login_success_menu中都可以获取 用户名信息
+        //保存 用户 到 Session域 中,这样,在每个页面 的 login_success_menu中都可以获取 用户名信息
         request.getSession().setAttribute("user", loginUser);
         request.getRequestDispatcher("/pages/user/login_success.jsp").forward(request, response);
     }
