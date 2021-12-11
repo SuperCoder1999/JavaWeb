@@ -20,6 +20,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("user", username);
         } else {
             response.getWriter().write("登录失败");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }
 
