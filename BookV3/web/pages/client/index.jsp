@@ -31,11 +31,11 @@
 <body>
 
 <div id="header">
-    <img class="logo_img" alt="" src="static/img/logo.gif" >
+    <img class="logo_img" alt="" src="../static/img/logo.gif" >
     <span class="wel_word">网上书城</span>
     <div>
         <c:if test="${not empty sessionScope.user.username}">
-            <span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
+            <span>欢迎<span class="um_span">${sessionScope.user.username}</span>书城项目</span>
             <a href="userServlet?action=logout">注销</a>&nbsp;&nbsp;
         </c:if>
         <c:if test="${empty sessionScope.user.username}">
