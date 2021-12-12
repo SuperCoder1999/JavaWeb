@@ -12,10 +12,10 @@ public class JdbcTest {
      */
     @Test
     public void test() {
-        for (int i = 0; i < 1000; i++) {
+        /*for (int i = 0; i < 1000; i++) {
             Connection connection = JdbcUtils.getConnection();
             JdbcUtils.close(connection);
             System.out.println(connection + "+" + i);
-        }
+        }*/
     }
 }

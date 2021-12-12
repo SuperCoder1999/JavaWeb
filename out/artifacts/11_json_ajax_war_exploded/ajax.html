@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert title here</title>
+
+		<script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+
+		<script type="text/javascript">
+			function ajaxRequest() {
+
+// 				1、我们首先要创建XMLHttpRequest 
+				var xmlHttpRequest = new XMLHttpRequest();
+// 				2、调用open方法设置请求参数
+				xmlHttpRequest.open("GET", "http://localhost:8080/11_json_ajax/ajaxServlet?action=javaScriptAjax", true);
+				//4、在send方法前绑定onreadystatechange事件，处理请求完成后的操作。
+				xmlHttpRequest.onreadystatechange = function() {
+					//alert(xmlHttpRequest.readyState);
+					//alert(xmlHttpRequest.status);
+					//每次 readyState 变化,都会调用这个onreadystatechange函数,
+					//直到满足 readyState==4,status==200时,才说明,服务器响应就绪,可以在客户端获取并处理响应了
+					if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+						//alert("收到服务器返回的数据：" + xmlHttpRequest.responseText);
+						//响应的信息,在xmlHttpRequest.responseText中.是字符串形式,需要转换为 JSON数据格式
+						var jsonObj = JSON.parse(xmlHttpRequest.responseText);
+						//获取document对象,向对应的标签中 插入 响应信息
+						var d = document.getElementById("div01");
+						d.innerHTML="编号: " + jsonObj.id + "  姓名: " + jsonObj.name;
+					}
+				}
+// 				3、调用send方法发送请求
+				xmlHttpRequest.send();
+
+				alert("我是最后一行代码")
+			}
+		</script>
+
+	</head>
+	<body>
+		<a href="http://localhost:8080/16_json_ajax_i18n/ajaxServlet?action=javaScriptAjax">非Ajax请求</a>
+		<button onclick="ajaxRequest()">ajax request</button> <br/>
+
+		<button onclick="ajaxRequest()">ajax request2</button><br/>
+
+		<button onclick="ajaxRequest()">ajax request3</button><br/>
+
+		<button onclick="ajaxRequest()">ajax request4</button><br/>
+
+		<button onclick="ajaxRequest()">ajax request5</button><br/>
+
+		<div id="div01">
+		</div>
+	</body>
+</html>
