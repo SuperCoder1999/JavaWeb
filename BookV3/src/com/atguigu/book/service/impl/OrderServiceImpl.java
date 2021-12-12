@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = new Order(orderId, new Date(), cart.getTotalPrice(), 0, userId);
         orderDao.saveOrder(order);
 
-        //int i = 12 / 0;
+        int i = 12 / 0;
 
         //2.将 购物车Cart中的Items中的CartItem全部取出,构成一个个OrderItem,再保存到数据库
         for (Map.Entry<Integer, CartItem> entry :

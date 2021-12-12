@@ -23,6 +23,8 @@ public class TransactionFilter implements Filter {
             JdbcUtils.rollbackAndClose();
             System.out.println("Transaction异常:");
             e.printStackTrace();
+            //为了 Tomcat能捕获到异常,并按照 web.xml的配置显示 对应的错误页面
+            throw new RuntimeException();
         }
     }
 
