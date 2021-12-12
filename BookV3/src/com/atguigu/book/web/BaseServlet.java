@@ -23,7 +23,12 @@ public class BaseServlet extends HttpServlet {
             Method method1 = userServletClass.getDeclaredMethod(method, HttpServletRequest.class, HttpServletResponse.class);
             method1.invoke(this, request, response);
         } catch (Exception e) {
+            //这里可能接收到 method1.invoke() 抛出的关于 事务的异常.
+            //不能处理掉这个异常,需要抛到 TransactionFilter中.即向上抛即可
+            //因为,TransactionFilter中的chain.doFilter()调用了 这里的doPast()或doGet()
+            System.out.println("BaseServlet 异常:");
             e.printStackTrace();
+            throw new RuntimeException(e);
         }
         //普通方式 调用 各个方法
         /*if ("login".equals(method)) {

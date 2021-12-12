@@ -29,11 +29,18 @@ public abstract class BaseDao<T> {//感觉在这里添加泛型,更好些:能判
             int rows = queryRunner.update(conn, sql, args);
             return rows;
         } catch (SQLException e) {
+            System.out.println("BaseDao 异常:");
             e.printStackTrace();
-        } finally {
+            //如果操作出现异常,就向上抛,由调用者函数,调用JDBCUtils.rollbackAndClose()方法
+            throw new RuntimeException(e);
+        }/*
+        这里就不能操作 WebUtils.close(conn);了, 因为关闭这个连接前,是要决定 是commit还是rollback.
+        这里不关闭  等到 Servlet程序中关于数据库的操作全部结束再关闭,
+        或者Servlet程序结束 后 由事务过滤器 关闭.
+        finally {
             JdbcUtils.close(conn);
-        }
-        return -1;//推荐写这种能返回-1的.不过 queryRunner.update()默认也是返回-1
+        }*/
+        //return -1;//推荐写这种能返回-1的.不过 queryRunner.update()默认也是返回-1
     }
 
     /**
@@ -50,12 +57,19 @@ public abstract class BaseDao<T> {//感觉在这里添加泛型,更好些:能判
         try {
             conn = JdbcUtils.getConnection();
             return queryRunner.query(conn, sql, new BeanHandler<T>(clazz), args);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
+        } catch (SQLException e) {
+            System.out.println("BaseDao 异常:");
+            e.printStackTrace();
+            //如果操作出现异常,就向上抛,由调用者函数,调用JDBCUtils.rollbackAndClose()方法
+            throw new RuntimeException(e);
+        }/*
+        这里就不能操作 WebUtils.close(conn);了, 因为关闭这个连接前,是要决定 是commit还是rollback.
+        这里不关闭  等到 Servlet程序中关于数据库的操作全部结束再关闭,
+        或者Servlet程序结束 后 由事务过滤器 关闭.
+        finally {
             JdbcUtils.close(conn);
-        }
-        return null;
+        }*/
+        //return null;
     }
 
     /**
@@ -72,12 +86,19 @@ public abstract class BaseDao<T> {//感觉在这里添加泛型,更好些:能判
         try {
             conn = JdbcUtils.getConnection();
             return queryRunner.query(conn, sql, new BeanListHandler<T>(clazz), args);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
+        } catch (SQLException e) {
+            System.out.println("BaseDao 异常:");
+            e.printStackTrace();
+            //如果操作出现异常,就向上抛,由调用者函数,调用JDBCUtils.rollbackAndClose()方法
+            throw new RuntimeException(e);
+        }/*
+        这里就不能操作 WebUtils.close(conn);了, 因为关闭这个连接前,是要决定 是commit还是rollback.
+        这里不关闭  等到 Servlet程序中关于数据库的操作全部结束再关闭,
+        或者Servlet程序结束 后 由事务过滤器 关闭.
+        finally {
             JdbcUtils.close(conn);
-        }
-        return null;
+        }*/
+        //return null;
     }
 
     /**
@@ -91,11 +112,18 @@ public abstract class BaseDao<T> {//感觉在这里添加泛型,更好些:能判
         try {
             conn = JdbcUtils.getConnection();
             return queryRunner.query(conn, sql, new ScalarHandler(), args);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
+        } catch (SQLException e) {
+            System.out.println("BaseDao 异常:");
+            e.printStackTrace();
+            //如果操作出现异常,就向上抛,由调用者函数,调用JDBCUtils.rollbackAndClose()方法
+            throw new RuntimeException(e);
+        }/*
+        这里就不能操作 WebUtils.close(conn);了, 因为关闭这个连接前,是要决定 是commit还是rollback.
+        这里不关闭  等到 Servlet程序中关于数据库的操作全部结束再关闭,
+        或者Servlet程序结束 后 由事务过滤器 关闭.
+        finally {
             JdbcUtils.close(conn);
-        }
-        return null;
+        }*/
+        //return null;
     }
 }
