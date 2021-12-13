@@ -22,10 +22,17 @@
                   在事件响应的function函数中,有一个this对象,这个对象,是当前响应
                   事件的dom对象
                  */
+                //原本用于 回显 加入购物车 后 的lastName 和 totalCount
+                //var bookId = $(this).attr("bookId");
+                <%--location.href="${pageScope.basePath}cartServlet?action=addItem&id=" + bookId;--%>
+            //现在 用 Ajax 局部更新 lastName和totalCount
                 var bookId = $(this).attr("bookId");
-                location.href="${pageScope.basePath}cartServlet?action=addItem&id=" + bookId;
-            })
-        })
+                $.getJSON("${pageScope.basePath}cartServlet", "action=ajaxAddItem&id=" + bookId, function(data) {
+                   $("#cartTotalCount").text("您的购物车中有" + data.totalCount + "件商品");
+                   $("#cartLastName").text(data.lastName);
+                });
+            });
+        });
     </Script>
 </head>
 <body>
@@ -47,6 +54,7 @@
     </div>
 </div>
 <div id="main">
+    ${sessionScope.cart.items}
     <div id="book">
         <div class="book_cond">
             <form action="client/bookServlet" method="get">
@@ -59,9 +67,13 @@
         </div>
         <div style="text-align: center">
             <c:if test="${not empty sessionScope.cart.items}">
-                <span>您的购物车中有${sessionScope.cart.totalCount}件商品</span>
+                <%--<span>您的购物车中有${sessionScope.cart.totalCount}件商品</span>
                 <div>
                     您刚刚将<span style="color: red">${sessionScope.lastName}</span>加入到了购物车中
+                </div>--%>
+                <span id="cartTotalCount"></span>
+                <div>
+                    您刚刚将<span id="cartLastName" style="color: red"></span>加入到了购物车中
                 </div>
             </c:if>
            <c:if test="${empty sessionScope.cart.items}">

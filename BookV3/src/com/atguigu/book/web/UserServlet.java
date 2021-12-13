@@ -3,12 +3,14 @@ package com.atguigu.book.web;
 import com.atguigu.book.pojo.User;
 import com.atguigu.book.service.impl.UserServiceImpl;
 import com.atguigu.book.utils.WebUtils;
+import com.google.gson.Gson;
 
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
@@ -17,7 +19,25 @@ public class UserServlet extends BaseServlet {
     //这个对数据库操作的类,几乎在每个方法中都要创建,所以提起出来
     UserServiceImpl userService = new UserServiceImpl();
 
-    //注销功能
+    /**
+     * 实时判断,用户名是否可用
+     */
+    protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.获取 传入的阐述username
+        String username = req.getParameter("username");
+        //2.调用 userService.existsUsername()判断是否存在
+        boolean existsName = userService.existsUsername(username);
+        HashMap<String, Object> map = new HashMap<>();
+        //将结果存到map中
+        map.put("existsName", existsName);
+        //将map转化成 json字符串
+        Gson gson = new Gson();
+        String mapJson = gson.toJson(map);
+        //回写 json字符串
+        resp.getWriter().write(mapJson);
+    }
+
+        //注销功能
     protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.删除 session
         req.getSession().invalidate();

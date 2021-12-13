@@ -16,6 +16,7 @@ public class BaseServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=UTF-8");
         String method = request.getParameter("action");
         //反射 调用方法
         try {

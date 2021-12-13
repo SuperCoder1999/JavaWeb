@@ -16,6 +16,22 @@
 
         $(function(){
 
+            //给 username输入框,绑定 blur事件.实时检验用户名是否存在,返回到页面
+            $("#username").blur(function() {
+                //获取 标签下的 value值,
+               var name = this.value;
+               //将value用 getJSON传给UserServlet中检验
+               $.getJSON("http://localhost:8080/BookV3/userServlet","action=ajaxExistsUsername&username=" + name,
+               function (data){
+                   //alert(data.existsName);
+                    if (!data.existsName) {
+                        $("span.errorMsg").text("用户名已存在");
+                    } else {
+                        $("span.errorMsg").text("用户名可用");
+                    }
+               });
+            });
+
             //点击 验证码图片,进行更换验证码
             $("#code_img").click(function () {
                this.src="${basePath}kaptcha.jpg?d=" + new Date();
