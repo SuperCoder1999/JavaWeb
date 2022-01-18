@@ -33,7 +33,7 @@ public class BookServlet extends BaseServlet {
     protected void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //添加数据后,定位最后一页
         int pageNo = WebUtils.parseInt(request.getParameter("pageNo"), 1);
-        pageNo += 1;
+        pageNo += 1;//如果是在
         //1.将获取的参数 封装成Book对象
         Book book = WebUtils.copyParaToBean(request.getParameterMap(), new Book());
         //2.调用bookService.addBook()方法 - 并没有验证
